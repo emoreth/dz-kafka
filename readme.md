@@ -32,7 +32,7 @@ Kubernetes: Manages containerized applications across multiple hosts.
 Kafka: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
-![image](https://github.com/user-attachments/assets/1ae915fe-0d5a-4e80-b001-49c52cb82e23)
+![image](https://github.com/user-attachments/assets/5d531b45-3772-4052-be94-8cc3dfff8a7a)
 
 ## Project Structure
 
