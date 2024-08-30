@@ -1,0 +1,35 @@
+# inventory-ui-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-ui
+  labels:
+    app: inventory-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-ui
+  template:
+    metadata:
+      labels:
+        app: inventory-ui
+    spec:
+      containers:
+        - name: inventory-ui
+          image: garvit3835/inventory-ui:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-ui-service
+spec:
+  selector:
+    app: inventory-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
