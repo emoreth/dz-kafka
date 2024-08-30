@@ -32,7 +32,7 @@ Kubernetes: Manages containerized applications across multiple hosts.
 Kafka: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
-![image](https://github.com/user-attachments/assets/5d531b45-3772-4052-be94-8cc3dfff8a7a)
+![](.gitbook/assets/dz-kafka-arch.png)
 
 ## Project Structure
 
@@ -52,7 +52,7 @@ e-commerce-app
 │   ├── zookeeper.yaml
 │   ├── inventory-ui.yaml
 │   └── frontend.yaml
-└── README.md
+└── readme.md
 ```
 backend/: Contains Node.js microservices for order and inventory management, along with Kafka producer and consumer.
 frontend/: Contains the React SPA for the e-commerce platform.
@@ -60,6 +60,12 @@ inventory-ui/: Contains the React SPA for the inventory page.
 k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
 
 ## User Interface
+### Front-End
+![](.gitbook/assets/Customer-view-page.png)
+![](.gitbook/assets/Product-Details-page.png)
+
+### Inventory Page
+![](.gitbook/assets/Backend-view.png)
 
 ## Usage
 
