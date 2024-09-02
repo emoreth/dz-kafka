@@ -29,15 +29,15 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 
 ## Tech Stack
 ### Backend
-Node.js: Handles API requests, business logic, and communicates with Kafka.
-Kafka: Used for message brokering between microservices (e.g., order service, inventory service).
+1. Node.js: Handles API requests, business logic, and communicates with Kafka.
+2. Kafka: Used for message brokering between microservices (e.g., order service, inventory service).
 ### Frontend
-React: Builds the user interface for the e-commerce application.
-JavaScript: Core programming language for frontend logic and interactivity.
+1. React: Builds the user interface for the e-commerce application.
+2. JavaScript: Core programming language for frontend logic and interactivity.
 ### Infrastructure
-Docker: Used for containerizing the application components.
-Kubernetes: Manages containerized applications across multiple hosts.
-Kafka: Facilitates event-driven communication between microservices.
+1. Docker: Used for containerizing the application components.
+2. Kubernetes: Manages containerized applications across multiple hosts.
+3. Kafka: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
 ![](.gitbook/assets/dz-kafka-arch.png)
@@ -62,10 +62,10 @@ e-commerce-app
 │   └── frontend.yaml
 └── readme.md
 ```
-backend/: Contains Node.js microservices for order and inventory management, along with Kafka producer and consumer.
-frontend/: Contains the React SPA for the e-commerce platform.
-inventory-ui/: Contains the React SPA for the inventory page.
-k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
+1. backend/: Contains Node.js microservices for order and inventory management, along with Kafka producer and consumer.
+2. frontend/: Contains the React SPA for the e-commerce platform.
+3. inventory-ui/: Contains the React SPA for the inventory page.
+4. k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
 
 ## User Interface
 ### Front-End
@@ -79,12 +79,11 @@ k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
 
 Once deployed, you can access the e-commerce application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Kafka for message brokering.
 
-## How To Deploy
+## How to Setup Kafka and other microservices in the workspace
 
 1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
-2. Connect to the workspace and clone this repo.
+2. Connect to the workspace and clone this repository.
 3. Go inside the folder `cd dz-kafka`.
 4. Run k8s `kubectl apply -f k8s`.
-5. Foward it's port `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
-6. Open new terminal and forward its port `kubectl port-forward --address 0.0.0.0 deployment/inventory-ui 8070:3000`.
-7. Access it from the browser: `http://<workspace-name>:8070`
+5. Foward the port of the frontend service with the command `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
+6. Access the frontend on the browser: `http://<workspace-name>:8070`
