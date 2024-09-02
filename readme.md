@@ -1,13 +1,21 @@
 # E-Commerce Application in DZ Workspace Cluster with Kafka as Message Broker
 
 ## Table of Contents
-- [Project Overview](#project-overview)
-- [Objectives](#objectives)
-- [Tech Stack](#tech-stack)
-- [Architecture Diagram](#architecture-diagram)
-- [Project Structure](#project-structure)
-- [User Interface](#user-interface)
-- [Usage](#usage)
+- [E-Commerce Application in DZ Workspace Cluster with Kafka as Message Broker](#e-commerce-application-in-dz-workspace-cluster-with-kafka-as-message-broker)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+  - [Objectives](#objectives)
+  - [Tech Stack](#tech-stack)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+    - [Infrastructure](#infrastructure)
+  - [Architecture Diagram](#architecture-diagram)
+  - [Project Structure](#project-structure)
+  - [User Interface](#user-interface)
+    - [Front-End](#front-end)
+    - [Inventory Page](#inventory-page)
+  - [Usage](#usage)
+  - [How To Deploy](#how-to-deploy)
 
 ## Project Overview
 This project demonstrates a basic e-commerce single-page application (SPA) deployed in DevZero Workspace Cluster. The application uses Kafka as a message broker for handling asynchronous communication between different microservices, such as order processing and inventory management. The frontend is built with React, and the backend services are implemented using Node.js.
@@ -70,3 +78,13 @@ k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
 ## Usage
 
 Once deployed, you can access the e-commerce application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Kafka for message brokering.
+
+## How To Deploy
+
+1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
+2. Connect to the workspace and clone this repo.
+3. Go inside the folder `cd dz-kafka`.
+4. Run k8s `kubectl apply -f k8s`.
+5. Foward it's port `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
+6. Open new terminal and forward its port `kubectl port-forward --address 0.0.0.0 deployment/inventory-ui 8070:3000`.
+7. Access it from the browser: `http://<workspace-name>:8070`
