@@ -15,7 +15,7 @@
     - [Front-End](#front-end)
     - [Inventory Page](#inventory-page)
   - [Usage](#usage)
-  - [How To Deploy](#how-to-deploy)
+  - [Setup Kafka in Workspace](#how-to-setup-kafka-and-other-microservices-in-the-workspace)
 
 ## Project Overview
 This project demonstrates a basic e-commerce single-page application (SPA) deployed in DevZero Workspace Cluster. The application uses Kafka as a message broker for handling asynchronous communication between different microservices, such as order processing and inventory management. The frontend is built with React, and the backend services are implemented using Node.js.
