@@ -117,7 +117,6 @@ function App() {
       console.log('Order placed successfully:', result);
     } catch (error) {
       console.error(error);
-      alert(error.message);
     }
   };
 
