@@ -129,19 +129,6 @@ function App() {
     });
     // console.log(response.status);
     // console.log(response);
-    // const options = {
-    //   method: 'GET',
-    //   headers: {
-    //     accept: 'application/json',
-    //     'x-account-id': '43318004987610890470',
-    //     authorization: 'Basic djEuZXUxLjZKMWU2TlJmbDg3Y0tHUkh4QUdNdVk0MFplSkt6ZDlvNmhIQm9LYTdUS1JiOXFROWZWZnktV1dLY1BqRUlrN3V4RE0zUVdOeFRiamtkME54VEpSUVRBOg=='
-    //   }
-    // };
-    
-    // fetch('https://api.stackone.com/unified/ats/applications?raw=false&page_size=25', options)
-    //   .then(response => response.json())
-    //   .then(response => console.log(response))
-    //   .catch(err => console.error(err));
 
     // if (response.ok) {
       
