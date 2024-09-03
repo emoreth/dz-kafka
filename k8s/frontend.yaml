@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: garvit3835/frontend:latest
+          image: garvit3835/frontend-1:latest
           ports:
             - containerPort: 3000
 ---
