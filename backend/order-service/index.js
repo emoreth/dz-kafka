@@ -32,7 +32,7 @@ app.post('/order', async (req, res) => {
     }
 });
 
-app.listen(5000, async() => {
+app.listen(3000, async() => {
     try {
         await producer.connect();
         console.log('Order Service listening on port 3000');

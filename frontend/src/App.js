@@ -116,13 +116,32 @@ function App() {
     }, 9000);
     // setCurrentStep(1);
     const orderId = `order-${Math.floor(Math.random() * 100000)}`; // Random order ID
-    const response = await fetch('http://localhost:5000/order', {
+    // const response = await fetch('https://quizapi.io/api/v1/questions?apiKey=6k1Zn6VW2lHtfKgb1GbcfQDYHOjZFfUrc7oVTMEF&limit=10');
+    //     const data = await response.json();
+    //     console.log(data);
+    // console.log()
+    const response = await fetch('http://order-service.dz-kafka.svc.cluster.local:3000/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ orderId, productId: selectedProduct.id, quantity }),
     });
+    // console.log(response.status);
+    // console.log(response);
+    // const options = {
+    //   method: 'GET',
+    //   headers: {
+    //     accept: 'application/json',
+    //     'x-account-id': '43318004987610890470',
+    //     authorization: 'Basic djEuZXUxLjZKMWU2TlJmbDg3Y0tHUkh4QUdNdVk0MFplSkt6ZDlvNmhIQm9LYTdUS1JiOXFROWZWZnktV1dLY1BqRUlrN3V4RE0zUVdOeFRiamtkME54VEpSUVRBOg=='
+    //   }
+    // };
+    
+    // fetch('https://api.stackone.com/unified/ats/applications?raw=false&page_size=25', options)
+    //   .then(response => response.json())
+    //   .then(response => console.log(response))
+    //   .catch(err => console.error(err));
 
     // if (response.ok) {
       
