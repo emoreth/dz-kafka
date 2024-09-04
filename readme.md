@@ -87,5 +87,5 @@ Once deployed, you can access the e-commerce application through the provided IP
 4. Run k8s `kubectl apply -f k8s`.
 5. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
 6. Access the frontend on the browser: `http://<workspace-name>:8070`
-7. Forward the port of the kafka-ui deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:3000`.
+7. Forward the port of the kafka-ui deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080`.
 8. Access the kafka-ui on `http://<workspace-name>:8030` and navigate to your topic in the UI to get the messages in it.
