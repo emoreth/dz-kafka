@@ -82,7 +82,7 @@ Once deployed, you can access the e-commerce application through the provided IP
 ## How to Setup Kafka and other microservices in the workspace
 
 1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
-2. Connect to the workspace and create a new namespace in the workspace `kubectl create namespace dz-kafka`.
+2. Connect to the workspace and create a new namespace `kubectl create namespace dz-kafka`.
 3. Change the context to the new namespace `kubectl config set-context --current --namespace=dz-kafka`.
 4. Clone this repository and go inside the folder `cd dz-kafka`.
 5. Run k8s `kubectl apply -f k8s`.
