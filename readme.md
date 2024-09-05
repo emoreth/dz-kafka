@@ -82,10 +82,11 @@ Once deployed, you can access the e-commerce application through the provided IP
 ## How to Setup Kafka and other microservices in the workspace
 
 1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
-2. Connect to the workspace and clone this repository.
-3. Go inside the folder `cd dz-kafka`.
-4. Run k8s `kubectl apply -f k8s`.
-5. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
-6. Access the frontend on the browser: `http://<workspace-name>:8070`
-7. Forward the port of the kafka-ui deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080`.
-8. Access the kafka-ui on `http://<workspace-name>:8030` and navigate to your topic in the UI to get the messages in it.
+2. Connect to the workspace and create a new namespace in the workspace `kubectl create namespace dz-kafka`.
+3. Change the context to the new namespace `kubectl config set-context --current --namespace=dz-kafka`.
+4. Clone this repository and go inside the folder `cd dz-kafka`.
+5. Run k8s `kubectl apply -f k8s`.
+6. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
+7. Access the frontend on the browser: `http://<workspace-name>:8070`
+8. Forward the port of the kafka-ui deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080`.
+9. Access the kafka-ui on `http://<workspace-name>:8030` and navigate to your topic in the UI to get the messages in it.
