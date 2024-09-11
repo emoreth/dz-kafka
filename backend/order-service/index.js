@@ -32,11 +32,21 @@ app.post('/order', async (req, res) => {
     }
 });
 
-app.listen(3000, async() => {
-    try {
-        await producer.connect();
-        console.log('Order Service listening on port 3000');
-    } catch (error) {
-        console.error('Error connecting to Kafka:', error);
+const connectProducer = async () => {
+    let connected = false;
+    while (!connected) {
+        try {
+            await producer.connect();
+            console.log('Connected to Kafka');
+            connected = true;
+        } catch (error) {
+            console.error('Error connecting to Kafka. Retrying in 5 seconds...', error);
+            await new Promise(resolve => setTimeout(resolve, 5000));
+        }
     }
+};
+
+app.listen(3000, async () => {
+    await connectProducer();
+    console.log('Order Service listening on port 3000');
 });
