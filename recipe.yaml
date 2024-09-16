@@ -1,0 +1,37 @@
+version: "3"
+
+build:
+  steps:
+    - type: apt-get
+      packages: ["build-essential", "curl", "git", "nano", "software-properties-common", "ssh", "sudo", "tar", "unzip", "vim", "wget", "zip"]
+    - type: command
+      command: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+        
+    - type: git-clone
+      url: https://github.com/ScaleupInfra/dz-kafka
+
+    - type: command
+      name: |
+        Download and install NVM, Rationale: File: frontend/package.json
+        Install Node.js 21.0.0, Rationale: No Node.js version specified; using default
+      command: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        echo 'export NVM_DIR=$HOME/.nvm' | sudo tee -a /etc/profile.d/nvm-installation.sh
+        echo '[ -s $NVM_DIR/nvm.sh ] && \. $NVM_DIR/nvm.sh' | sudo tee -a /etc/profile.d/nvm-installation.sh
+        . /etc/profile.d/nvm-installation.sh
+        nvm install 21.0.0
+      directory: /home/devzero
+      user: devzero
+  
+launch:
+  steps:
+    - type: command
+      command: |
+        kubectl create namespace dz-kafka
+        kubectl config set-context --current --namespace=dz-kafka
+        cd dz-kafka
+        kubectl apply -f k8s
+        kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000 &
+        kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080 &
