@@ -33,5 +33,3 @@ launch:
         kubectl config set-context --current --namespace=dz-kafka
         cd dz-kafka
         kubectl apply -f k8s
-        kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000 &
-        kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080 &
