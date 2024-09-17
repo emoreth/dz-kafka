@@ -29,7 +29,11 @@ launch:
   steps:
     - type: command
       command: |
-        kubectl create namespace dz-kafka
-        kubectl config set-context --current --namespace=dz-kafka
-        cd dz-kafka
-        kubectl apply -f k8s
+        if ! kubectl get ns dz-kafka >/dev/null 2>&1; then
+          kubectl create namespace dz-kafka
+          kubectl config set-context --current --namespace=dz-kafka
+          cd dz-kafka
+          kubectl apply -f k8s
+        else
+          echo "Namespace dz-kafka already exists. Skipping steps."
+        fi
