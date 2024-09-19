@@ -5,7 +5,6 @@ const http = require('http');
 
 const app = express();
 const server = http.createServer(app);
-// const wss = new WebSocket.Server({ server });
 
 const kafka = new Kafka({
     clientId: 'inventory-service',
@@ -13,22 +12,6 @@ const kafka = new Kafka({
 });
 
 const consumer = kafka.consumer({ groupId: 'inventory-group' });
-
-// WebSocket setup
-// wss.on('connection', ws => {
-//     console.log('Client connected');
-//     ws.on('message', message => {
-//         console.log(`Received message => ${message}`);
-//     });
-// });
-
-// const sendToClients = (order) => {
-//     wss.clients.forEach(client => {
-//         if (client.readyState === WebSocket.OPEN) {
-//             client.send(JSON.stringify(order));
-//         }
-//     });
-// };
 
 const run = async () => {
     await consumer.connect();
@@ -45,7 +28,22 @@ const run = async () => {
 
 run().catch(console.error);
 
+const connectConsumer = async () => {
+    let connected = false;
+    while (!connected) {
+        try {
+            await consumer.connect();
+            console.log('Connected to Kafka');
+            connected = true;
+        } catch (error) {
+            console.error('Error connecting to Kafka. Retrying in 5 seconds...', error);
+            await new Promise(resolve => setTimeout(resolve, 5000));
+        }
+    }
+};
+
 // Start HTTP server
 server.listen(8080, () => {
+    await connectConsumer();
     console.log('Server running on http://localhost:8080');
 });
