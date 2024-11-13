@@ -20,6 +20,7 @@ spec:
           image: garvit3835/frontend-1:latest
           ports:
             - containerPort: 3000
+              name: frontend
 ---
 apiVersion: v1
 kind: Service
@@ -31,5 +32,4 @@ spec:
   ports:
     - protocol: TCP
       port: 8000
-      targetPort: 8000
-  type: LoadBalancer
+      targetPort: frontend
